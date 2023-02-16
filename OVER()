@@ -1,0 +1,8 @@
+SELECT 
+  product_id,
+  product_name,
+  SUM(current_inventory) OVER(ORDER BY product_id) as cum_total,
+  SUM(current_inventory) OVER(ORDER BY product_id rows between unbounded preceding AND unbounded following) as total
+
+from tutorial.excel_sql_inventory_data
+
